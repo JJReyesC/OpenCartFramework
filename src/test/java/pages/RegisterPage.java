@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import framework.core.BaseFramework;
 import framework.enums.ByType;
 import utils.ObjectFileReader;
+import utils.TestData;
 
 //al final manda a la pantalla = https://opencart.abstracta.us/index.php?route=account/account
 //Se muestra texto de "Congratulations"
@@ -35,7 +36,7 @@ public class RegisterPage {
 				
 				bf.getElementBy(homeObj.getProperty("cart.framework.account.myaccount"), ByType.XPATH).click();
 				bf.getElementBy(registerObj.getProperty("cart.framework.register.register"), ByType.XPATH).click();
-				bf.getElementBy(registerObj.getProperty("cart.framework.register.firstname"), ByType.XPATH).sendKeys("juan pedro");
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.firstname"), ByType.XPATH).sendKeys(TestData.FAKE_NAME);
 				bf.getElementBy(registerObj.getProperty("cart.framework.register.lastname"), ByType.XPATH).sendKeys("Fernandez gaucin");
 				bf.getElementBy(registerObj.getProperty("cart.framework.register.email"), ByType.XPATH).sendKeys("juanpe1010@correo.com");				
 				bf.getElementBy(registerObj.getProperty("cart.framework.register.telephone"), ByType.XPATH).sendKeys("8711454545");				
