@@ -14,14 +14,12 @@ public class DriverManagerFactory {
 		case CHROME:
 			manager = new ChromeDriverManager();
 			break;
-
 		case FIREFOX:
 			manager = new FirefoxDriverManager();
 			break;
 		case EDGE:
 			manager = new EdgeDriverManager();
 			break;
-
 		default:
 			manager = new ChromeDriverManager();
 			break;

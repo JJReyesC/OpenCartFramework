@@ -12,8 +12,8 @@ import utils.ObjectFileReader;
 //Se muestra texto de "Congratulations"
 public class RegisterPage {
 	
-	ObjectFileReader ofr;
-	Properties properties;
+	ObjectFileReader ofrHome, ofrRegister;
+	Properties homeObj, registerObj;
 	WebDriver driver;
 	BaseFramework bf;
 	
@@ -26,28 +26,30 @@ public class RegisterPage {
 	public void TryRegister () {
 		
 			try {
-				ofr = new ObjectFileReader();
-				properties = ofr.getProperties();
-				this.driver.get(properties.getProperty("cart.framework.URL"));
+				ofrHome = new ObjectFileReader("home");
+				ofrRegister = new ObjectFileReader("register");
+				homeObj = ofrHome.getProperties();
+				registerObj = ofrRegister.getProperties();
+				this.driver.get(homeObj.getProperty("cart.framework.URL"));
 				bf = new BaseFramework(driver);
 				
-				bf.getElementBy(properties.getProperty("cart.framework.account.myaccount"), ByType.XPATH).click();
-				bf.getElementBy(properties.getProperty("cart.framework.register.register"), ByType.XPATH).click();
-				bf.getElementBy(properties.getProperty("cart.framework.register.firstname"), ByType.XPATH).sendKeys("juan pedro");
-				bf.getElementBy(properties.getProperty("cart.framework.register.lastname"), ByType.XPATH).sendKeys("Fernandez gaucin");
-				bf.getElementBy(properties.getProperty("cart.framework.register.email"), ByType.XPATH).sendKeys("juanpe1010@correo.com");				
-				bf.getElementBy(properties.getProperty("cart.framework.register.telephone"), ByType.XPATH).sendKeys("8711454545");				
-				bf.getElementBy(properties.getProperty("cart.framework.register.password"), ByType.XPATH).sendKeys("1234567890");				
-				bf.getElementBy(properties.getProperty("cart.framework.register.confirm"), ByType.XPATH).sendKeys("1234567890");				
-				bf.getElementBy(properties.getProperty("cart.framework.register.newsletter.yes"), ByType.XPATH).click();	
-				bf.getElementBy(properties.getProperty("cart.framework.register.checkbox_privacy"), ByType.XPATH).click();				
-				bf.getElementBy(properties.getProperty("cart.framework.register.submit_continue"), ByType.XPATH).click();
+				bf.getElementBy(homeObj.getProperty("cart.framework.account.myaccount"), ByType.XPATH).click();
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.register"), ByType.XPATH).click();
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.firstname"), ByType.XPATH).sendKeys("juan pedro");
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.lastname"), ByType.XPATH).sendKeys("Fernandez gaucin");
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.email"), ByType.XPATH).sendKeys("juanpe1010@correo.com");				
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.telephone"), ByType.XPATH).sendKeys("8711454545");				
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.password"), ByType.XPATH).sendKeys("1234567890");				
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.confirm"), ByType.XPATH).sendKeys("1234567890");				
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.newsletter.yes"), ByType.XPATH).click();	
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.checkbox_privacy"), ByType.XPATH).click();				
+				bf.getElementBy(registerObj.getProperty("cart.framework.register.submit_continue"), ByType.XPATH).click();
 				
 				//Thread.sleep(5000);
 				
 				//mensaje de registro correcto
 				message = bf
-						.getElementBy(properties.getProperty("cart.framework.register.congratulations"), ByType.XPATH)
+						.getElementBy(registerObj.getProperty("cart.framework.register.congratulations"), ByType.XPATH)
 						.getText();
 				
 				//bf.getElementBy(properties.getProperty("cart.framework.register.continue"), ByType.XPATH).click();

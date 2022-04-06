@@ -9,6 +9,7 @@ public class ChromeDriverManager extends DriverManager {
 	protected void createWebDriver() {
 		WebDriverManager.chromedriver().setup();
 		this.driver = new ChromeDriver();
+		this.driver.manage().window().maximize();
 	}
 
 }

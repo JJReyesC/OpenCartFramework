@@ -9,6 +9,7 @@ public class FirefoxDriverManager extends DriverManager {
 	protected void createWebDriver() {
 		WebDriverManager.firefoxdriver().setup();
 		this.driver = new FirefoxDriver();
+		this.driver.manage().window().maximize();
 	}
 
 }

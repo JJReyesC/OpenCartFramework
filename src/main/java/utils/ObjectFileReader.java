@@ -9,12 +9,13 @@ import java.util.Properties;
 public class ObjectFileReader {
 
 	private Properties properties;
-	private final String propertyFilePath = "../OpenCartFramework/src/main/java/utils/Object_Repository.properties";
+	private final String propertyFilePath = "../OpenCartFramework/src/main/java/utils/%s.properties";
 
-	public ObjectFileReader() {
+	public ObjectFileReader(String page) {
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader(propertyFilePath));
+			String path = String.format(propertyFilePath,page);
+			reader = new BufferedReader(new FileReader(path));
 			properties = new Properties();
 			try {
 				properties.load(reader);
@@ -28,16 +29,7 @@ public class ObjectFileReader {
 		}
 	}
 
-	public String getDriverPath() {
-		String driverPath = properties.getProperty("driverPath");
-		if (driverPath != null)
-			return driverPath;
-		else
-			throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
-	}
-
 	public Properties getProperties() {
 		return properties;
 	}
-	
 }
