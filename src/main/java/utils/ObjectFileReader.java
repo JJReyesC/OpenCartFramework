@@ -9,7 +9,7 @@ import java.util.Properties;
 public class ObjectFileReader {
 
 	private Properties properties;
-	private final String propertyFilePath = ".//Object_Repository.properties";
+	private final String propertyFilePath = "../OpenCartFramework/src/main/java/utils/Object_Repository.properties";
 
 	public ObjectFileReader() {
 		BufferedReader reader;
@@ -24,7 +24,7 @@ public class ObjectFileReader {
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Configuration.properties not found at " + propertyFilePath);
+			throw new RuntimeException("Object_Repository.properties not found at " + propertyFilePath);
 		}
 	}
 
@@ -35,4 +35,9 @@ public class ObjectFileReader {
 		else
 			throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
 	}
+
+	public Properties getProperties() {
+		return properties;
+	}
+	
 }
