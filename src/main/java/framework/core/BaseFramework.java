@@ -112,6 +112,11 @@ public class BaseFramework {
 	public void waitForElementVisibitlity(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
+	
+	public String waitForElementVisibitlityAndGetText(WebElement element) {
+		wait.until(ExpectedConditions.visibilityOf(element));
+		return element.getText();
+	}
 
 	public void waitForElementInvisibitlity(WebElement element) {
 		wait.until(ExpectedConditions.invisibilityOf(element));
