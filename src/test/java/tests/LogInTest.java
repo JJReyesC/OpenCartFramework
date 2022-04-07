@@ -17,6 +17,14 @@ public class LogInTest {
 	WebDriver driver;
 	LoginPage login;
 
+	@BeforeTest
+	public void setup() {
+		// Init ChromeDriver from Factory pattern
+		driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
+		driver = driverManager.getWebDriver();
+		login = new LoginPage(driver);
+	}
+
 	@Test
 	public void LogInAttempt() {
 		// Assert.assertTrue(register.runLogIn());
@@ -24,16 +32,8 @@ public class LogInTest {
 		Assert.assertTrue(login.getMessage().contains("My Account"));
 	}
 
-	@BeforeTest
-	public void beforeTest() {
-		// Init ChromeDriver from Factory pattern
-		driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
-		driver = driverManager.getWebDriver();
-		login = new LoginPage(driver);
-	}
-
 	@AfterTest
-	public void afterTest() {
+	public void tearDown() {
 		driver.quit();
 	}
 

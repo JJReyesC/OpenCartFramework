@@ -5,36 +5,33 @@ import org.testng.annotations.Test;
 import framework.core.DriverManagerFactory;
 import framework.core.drivers.DriverManager;
 import framework.enums.DriverType;
-import pages.RegisterPage;
+import pages.LoginPage;
+import pages.WishlistPage;
 
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class RegisterTest {
+public class WishlistTest {
 	// Driver manager class
 	DriverManager driverManager;
 	WebDriver driver;
-	RegisterPage register;
-
+	LoginPage login;
+	WishlistPage wishlist;
 
 	@BeforeTest
 	public void setup() {
-		// Init ChromeDriver from Factory pattern
 		driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
 		driver = driverManager.getWebDriver();
-		register = new RegisterPage(driver);
+		login = new LoginPage(driver);
+		wishlist = new WishlistPage(driver);
 	}
-	
+
 	@Test
-	public void RegisterAccount() {
-		// Assert.assertTrue(register.runLogIn());
-		register.TryRegister();
-
-		Assert.assertTrue(register.getMessage().contains("Congratulations"));
+	public void addToWishlist() {
+		login.TryLogIn();
+		
 	}
-
 
 	@AfterTest
 	public void tearDown() {

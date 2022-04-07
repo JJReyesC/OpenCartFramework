@@ -12,4 +12,10 @@ public class TestData {
 	public static String REGISTER_TELEPHONE = "8711454545";
 	public static String REGISTER_PASSWORD = "1234567890";
 
+	// Wishlist products
+	public static String MACBOOK = "MacBook";
+	public static String IPHONE = "iPhone";
+	public static String APPLE_CINEMA = "Apple Cinema 30\"";
+	public static String CAMERA_CANNON = "Canon EOS 5D";
+
 }
